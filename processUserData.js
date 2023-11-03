@@ -4,6 +4,7 @@ import data from "./user_data.json";
 const userData = [...data];
 
 // Function to find the country with the highest income
+
 function findCountryWithHighestIncome(userData) {
   const highestIncome = Math.max(...userData.map(user => user.income));
   const countryWithHighestIncome = userData.find(user => user.income === highestIncome).country;
@@ -11,6 +12,7 @@ function findCountryWithHighestIncome(userData) {
 }
 
 // Function to find the country with the combined highest income
+
 function findCountryWithCombinedHighestIncome(userData) {
   const combinedIncomes = userData.reduce((countries,user) => {
     countries[user.country] = (countries[user.country] || 0 ) + user.income;
@@ -31,7 +33,7 @@ function getUsersWithEmailEndingInGov(userData) {
 // Function to find the country with the maximum combined income for females
 function findCountryWithMaxCombinedIncomeForFemales(userData) {
   const femaleIncome = userData.reduce((countries,user) => {
-    if(user.gender.toLowerCase() === "Female"){
+    if(user.gender.toLowerCase() === "female"){
       countries[user.country] = (countries[user.country] || 0) + user.income;
     }
     return countries;
@@ -51,7 +53,17 @@ function findCountryWithMaxCombinedIncomeForFemales(userData) {
       return false;
     }
     
-    if(!userData.every((user)=> typeof user.id === "number" && typeof user.first_name === "string" && user.first_name !== ''   && typeof user.last_name === "string" && user.last_name !== '' && typeof user.country === "string" && user.country !== '' && typeof user.income === "number" && !(user.income < 0) && typeof user.email === "string" && typeof user.gender === "string"))
+    if(!userData.every((user)=> typeof user.id === "number" && 
+    typeof user.first_name === "string" && 
+    user.first_name !== ''   && 
+    typeof user.last_name === "string" && 
+    user.last_name !== '' && 
+    typeof user.country === "string" && 
+    user.country !== '' && 
+    typeof user.income === "number" && 
+    !(user.income < 0) && 
+    typeof user.email === "string" && 
+    typeof user.gender === "string"))
     {
       console.log("Invalid Input");
       return false;
